@@ -65,21 +65,17 @@ class CollectResponse implements Responsable
 
     public function toArray(): array
     {
-        $data = [
-            'transactionId' => $this->transactionId,
-            'hintCode'      => $this->hintCode,
-            'status'        => $this->status,
-        ];
-
-        if ($this->qrCode !== null) {
-            $data['qrCode'] = $this->qrCode;
-        }
-
-        if ($this->completionResponse !== null) {
-            $data['completionResponse'] = $this->completionResponse->toArray();
-        }
-
-        return $data;
+        return array_filter([
+            'transactionId'      => $this->transactionId,
+            'hintCode'           => $this->hintCode,
+            'status'             => $this->status,
+            'qrCode'             => $this->qrCode,
+            'completionResponse' => $this->completionResponse
+                ? $this->completionResponse->toArray()
+                : null,
+        ], function ($value) {
+            return !is_null($value);
+        });
     }
 
     public function toResponse($request): Response
