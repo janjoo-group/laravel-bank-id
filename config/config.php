@@ -1,5 +1,7 @@
 <?php
 
+use Jgroup\BankID\Service\BankIDService;
+
 /**
  * https://www.bankid.com/utvecklare/guider/teknisk-integrationsguide
  */
@@ -40,7 +42,7 @@ return [
      */
     'logging'                 => [
         'channels' => [
-            'bankid-completions' => [
+            BankIDService::LOG_CHANNEL_COMPLETIONS => [
                 'driver' => 'single',
                 'path'   => storage_path('logs/bankid-completions.log'),
                 'level'  => 'debug',

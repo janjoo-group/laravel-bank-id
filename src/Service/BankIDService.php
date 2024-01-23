@@ -22,6 +22,8 @@ use Jgroup\BankID\Service\Models\Http\TransactionResponse;
 
 class BankIDService
 {
+    const LOG_CHANNEL_COMPLETIONS = 'bankid-completions';
+
     protected RpApi $rpApi;
 
     protected Session $session;
@@ -167,7 +169,7 @@ class BankIDService
             $status = Status::fromString($collectResponse->getStatus());
 
             if ($status === Status::COMPLETE) {
-                $this->logger->channel('bankid-completions')->info(json_encode($collectResponse));
+                $this->logger->channel(self::LOG_CHANNEL_COMPLETIONS)->info(json_encode($collectResponse));
             }
 
             $transaction->setLastCollectResponse($collectResponse);
