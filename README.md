@@ -12,7 +12,7 @@ Start by installing the package using Composer.
 
 `composer require jgroup/laravel-bank-id`
 
-Publish config and certificates by running:
+Publish config and certificates (test certificates and production ca root certificate) by running:
 
 `php artisan vendor:publish --provider="Jgroup\BankID\BankIDServiceProvider"`
 
