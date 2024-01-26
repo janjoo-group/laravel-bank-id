@@ -53,6 +53,9 @@ Route::post('/auth/bankid/collect', function(Request $request) {
 
         $user = User::where('pnr', $personalNumber)->firstOrFail();
 
+        // clear session transaction when completed
+        BankID::setSessionTransaction(null);
+
         Auth::login($user);
     }
 
