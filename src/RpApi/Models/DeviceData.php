@@ -2,11 +2,13 @@
 
 namespace Jgroup\BankID\RpApi\Models;
 
-class DeviceData
-{
-    protected ?string $ipAddress = null;
+use Jgroup\BankID\Serializers\JsonSerializer;
 
-    protected ?string $uhi = null;
+class DeviceData extends JsonSerializer
+{
+    public ?string $ipAddress = null;
+
+    public ?string $uhi = null;
 
     public function getIpAddress(): ?string
     {

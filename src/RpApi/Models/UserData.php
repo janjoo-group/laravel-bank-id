@@ -2,15 +2,17 @@
 
 namespace Jgroup\BankID\RpApi\Models;
 
-class UserData
+use Jgroup\BankID\Serializers\JsonSerializer;
+
+class UserData extends JsonSerializer
 {
-    protected ?string $personalNumber = null;
+    public ?string $personalNumber = null;
 
-    protected ?string $name = null;
+    public ?string $name = null;
 
-    protected ?string $givenName = null;
+    public ?string $givenName = null;
 
-    protected ?string $surname = null;
+    public ?string $surname = null;
 
     public function getPersonalNumber(): ?string
     {

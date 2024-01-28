@@ -4,21 +4,22 @@ namespace Jgroup\BankID\Service\Models\Http;
 
 use Illuminate\Http\Response;
 use Illuminate\Contracts\Support\Responsable;
+use Jgroup\BankID\Serializers\JsonSerializer;
 use Jgroup\BankID\Service\Models\CollectResult;
 
-class CollectResponse implements Responsable
+class CollectResponse extends JsonSerializer implements Responsable
 {
-    protected string $transactionId;
+    public string $transactionId;
 
-    protected ?string $hintCode = null;
+    public ?string $hintCode = null;
 
-    protected ?string $status = null;
+    public ?string $status = null;
 
-    protected ?string $qrCode = null;
+    public ?string $qrCode = null;
 
     protected CollectResult $collectResult;
 
-    protected ?CompletionResponse $completionResponse = null;
+    public ?CompletionResponse $completionResponse = null;
 
     public function __construct(string $transactionId, CollectResult $collectResult)
     {
@@ -61,21 +62,6 @@ class CollectResponse implements Responsable
     public function getCompletionResponse(): ?CompletionResponse
     {
         return $this->completionResponse;
-    }
-
-    public function toArray(): array
-    {
-        return array_filter([
-            'transactionId'      => $this->transactionId,
-            'hintCode'           => $this->hintCode,
-            'status'             => $this->status,
-            'qrCode'             => $this->qrCode,
-            'completionResponse' => $this->completionResponse
-                ? $this->completionResponse->toArray()
-                : null,
-        ], function ($value) {
-            return !is_null($value);
-        });
     }
 
     public function toResponse($request): Response

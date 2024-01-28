@@ -169,7 +169,9 @@ class BankIDService
             $status = Status::fromString($collectResponse->getStatus());
 
             if ($status === Status::COMPLETE) {
-                $this->logger->channel(self::LOG_CHANNEL_COMPLETIONS)->info(json_encode($collectResponse));
+                $this->logger
+                    ->channel(self::LOG_CHANNEL_COMPLETIONS)
+                    ->info(json_encode($collectResponse));
             }
 
             $transaction->setLastCollectResponse($collectResponse);

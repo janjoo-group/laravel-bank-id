@@ -2,9 +2,11 @@
 
 namespace Jgroup\BankID\RpApi\Models;
 
-class SetUpData
+use Jgroup\BankID\Serializers\JsonSerializer;
+
+class SetUpData extends JsonSerializer
 {
-    protected ?boolean $mrtd = null;
+    public ?boolean $mrtd = null;
 
     public function getMrtd(): ?boolean
     {

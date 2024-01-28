@@ -4,8 +4,9 @@ namespace Jgroup\BankID\Service\Models\Http;
 
 use Illuminate\Http\Response;
 use Illuminate\Contracts\Support\Responsable;
+use Jgroup\BankID\Serializers\JsonSerializer;
 
-class CancelResponse implements Responsable
+class CancelResponse extends JsonSerializer implements Responsable
 {
     protected bool $wasCancelledSuccessfully;
 
@@ -17,13 +18,6 @@ class CancelResponse implements Responsable
     public function getWasCancelledSuccessfully(): bool
     {
         return $this->wasCancelledSuccessfully;
-    }
-
-    public function toArray(): array
-    {
-        return [
-            //
-        ];
     }
 
     public function toResponse($request): Response

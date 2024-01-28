@@ -2,15 +2,17 @@
 
 namespace Jgroup\BankID\RpApi\Models;
 
-class CollectResponse
+use Jgroup\BankID\Serializers\JsonSerializer;
+
+class CollectResponse extends JsonSerializer
 {
-    protected ?string $orderRef = null;
+    public ?string $orderRef = null;
 
-    protected ?string $status = null;
+    public ?string $status = null;
 
-    protected ?string $hintCode = null;
+    public ?string $hintCode = null;
 
-    protected ?CompletionData $completionData = null;
+    public ?CompletionData $completionData = null;
 
     public function getOrderRef(): ?string
     {

@@ -2,19 +2,21 @@
 
 namespace Jgroup\BankID\RpApi\Models;
 
-class CompletionData
+use Jgroup\BankID\Serializers\JsonSerializer;
+
+class CompletionData extends JsonSerializer
 {
-    protected ?UserData $user = null;
+    public ?UserData $user = null;
 
-    protected ?DeviceData $device = null;
+    public ?DeviceData $device = null;
 
-    protected ?SetUpData $setUp = null;
+    public ?SetUpData $setUp = null;
 
-    protected ?string $bankIdIssueDate = null;
+    public ?string $bankIdIssueDate = null;
 
-    protected ?string $signature = null;
+    public ?string $signature = null;
 
-    protected ?string $ocspResponse = null;
+    public ?string $ocspResponse = null;
 
     public function getUser(): ?UserData
     {

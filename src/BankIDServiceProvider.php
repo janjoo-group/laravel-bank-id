@@ -66,16 +66,13 @@ class BankIDServiceProvider extends ServiceProvider
                 ],
             ], $httpClientOptions));
 
-            $mapper                    = new JsonMapper();
-            $mapper->bIgnoreVisibility = true;
-
             return new RpApi(
                 $httpClient,
                 $baseUrl,
                 $certPath,
                 $certKeyPath,
                 $caCertPath,
-                $mapper
+                new JsonMapper()
             );
         });
 

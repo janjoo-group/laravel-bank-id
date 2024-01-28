@@ -4,12 +4,13 @@ namespace Jgroup\BankID\Service\Models\Http;
 
 use Illuminate\Http\Response;
 use Illuminate\Contracts\Support\Responsable;
+use Jgroup\BankID\Serializers\JsonSerializer;
 
-class TransactionResponse implements Responsable
+class TransactionResponse extends JsonSerializer implements Responsable
 {
-    protected string $transactionId;
+    public string $transactionId;
 
-    protected string $autoStartToken;
+    public string $autoStartToken;
 
     public function __construct(string $transactionId, string $autoStartToken)
     {
@@ -25,14 +26,6 @@ class TransactionResponse implements Responsable
     public function getAutoStartToken(): string
     {
         return $this->autoStartToken;
-    }
-
-    public function toArray(): array
-    {
-        return [
-            'transactionId'  => $this->transactionId,
-            'autoStartToken' => $this->autoStartToken,
-        ];
     }
 
     public function toResponse($request): Response

@@ -2,17 +2,19 @@
 
 namespace Jgroup\BankID\RpApi\Models;
 
-class AuthRequest
+use Jgroup\BankID\Serializers\JsonSerializer;
+
+class AuthRequest extends JsonSerializer
 {
-    protected string $endUserIp;
+    public string $endUserIp;
 
-    protected ?string $userVisibleData = null;
+    public ?string $userVisibleData = null;
 
-    protected ?string $userVisibleDataFormat = null;
+    public ?string $userVisibleDataFormat = null;
 
-    protected ?string $userNonVisibleData = null;
+    public ?string $userNonVisibleData = null;
 
-    protected ?array $requirement = null;
+    public ?array $requirement = null;
 
     public function __construct(string $endUserIp)
     {
@@ -67,18 +69,5 @@ class AuthRequest
     public function setRequirement(?array $requirement): void
     {
         $this->requirement = $requirement;
-    }
-
-    public function toArray()
-    {
-        return array_filter([
-            'endUserIp'             => $this->endUserIp,
-            'userVisibleData'       => $this->userVisibleData,
-            'userVisibleDataFormat' => $this->userVisibleDataFormat,
-            'userNonVisibleData'    => $this->userNonVisibleData,
-            'requirement'           => $this->requirement,
-        ], function ($value) {
-            return !is_null($value);
-        });
     }
 }

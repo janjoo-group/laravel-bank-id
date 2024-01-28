@@ -4,15 +4,16 @@ namespace Jgroup\BankID\Service\Models\Http;
 
 use Illuminate\Http\Response;
 use Illuminate\Contracts\Support\Responsable;
+use Jgroup\BankID\Serializers\JsonSerializer;
 use Jgroup\BankID\Service\Models\CompletionResult;
 
-class CompletionResponse implements Responsable
+class CompletionResponse extends JsonSerializer implements Responsable
 {
     const NUMBER_OF_DIGITS_TO_HIDE = 4;
 
-    protected string $name;
+    public string $name;
 
-    protected string $personalNumber;
+    public string $personalNumber;
 
     public function __construct(CompletionResult $completionResult)
     {
@@ -36,14 +37,6 @@ class CompletionResponse implements Responsable
     public function getPersonalNumber(): string
     {
         return $this->personalNumber;
-    }
-
-    public function toArray(): array
-    {
-        return [
-            'name'           => $this->name,
-            'personalNumber' => $this->personalNumber,
-        ];
     }
 
     public function toResponse($request): Response

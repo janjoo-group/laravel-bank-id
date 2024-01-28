@@ -2,9 +2,11 @@
 
 namespace Jgroup\BankID\RpApi\Models;
 
-class CollectRequest
+use Jgroup\BankID\Serializers\JsonSerializer;
+
+class CollectRequest extends JsonSerializer
 {
-    protected string $orderRef;
+    public string $orderRef;
 
     public function __construct(string $orderRef)
     {
@@ -19,12 +21,5 @@ class CollectRequest
     public function setOrderRef(string $orderRef): void
     {
         $this->orderRef = $orderRef;
-    }
-
-    public function toArray()
-    {
-        return [
-            'orderRef' => $this->getOrderRef(),
-        ];
     }
 }
