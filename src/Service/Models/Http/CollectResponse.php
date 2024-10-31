@@ -17,6 +17,8 @@ class CollectResponse extends JsonSerializer implements Responsable
 
     public ?string $qrCode = null;
 
+    protected array $customData = [];
+
     protected CollectResult $collectResult;
 
     public ?CompletionResponse $completionResponse = null;
@@ -64,10 +66,17 @@ class CollectResponse extends JsonSerializer implements Responsable
         return $this->completionResponse;
     }
 
+    public function withData(array $data): self
+    {
+        $this->customData = $data;
+
+        return $this;
+    }
+
     public function toResponse($request): Response
     {
         return new Response(
-            json_encode($this->toArray()),
+            json_encode(array_merge($this->customData, $this->toArray())),
             Response::HTTP_OK,
             ['Content-Type' => 'application/json']
         );
