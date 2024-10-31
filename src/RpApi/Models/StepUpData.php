@@ -4,7 +4,7 @@ namespace Jgroup\BankID\RpApi\Models;
 
 use Jgroup\BankID\Serializers\JsonSerializer;
 
-class SetUpData extends JsonSerializer
+class StepUpData extends JsonSerializer
 {
     public ?boolean $mrtd = null;
 

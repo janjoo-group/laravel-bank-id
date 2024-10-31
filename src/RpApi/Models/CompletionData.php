@@ -10,7 +10,7 @@ class CompletionData extends JsonSerializer
 
     public ?DeviceData $device = null;
 
-    public ?SetUpData $setUp = null;
+    public ?StepUpData $stepUp = null;
 
     public ?string $bankIdIssueDate = null;
 
@@ -38,14 +38,14 @@ class CompletionData extends JsonSerializer
         $this->device = $device;
     }
 
-    public function getSetUp(): ?SetUpData
+    public function getStepUp(): ?StepUpData
     {
-        return $this->setUp;
+        return $this->stepUp;
     }
 
-    public function setSetUp(SetUpData $setUp): void
+    public function setStepUp(StepUpData $stepUp): void
     {
-        $this->setUp = $setUp;
+        $this->stepUp = $stepUp;
     }
 
     public function getBankIdIssueDate(): ?string
