@@ -258,7 +258,7 @@ class BankIDService
 
     protected function getQRData(BankIDTransaction $transaction): string
     {
-        $secondsElapsedSinceStartTime = $transaction->getStartTime()->diffInSeconds(Carbon::now());
+        $secondsElapsedSinceStartTime = (int) $transaction->getStartTime()->diffInSeconds(Carbon::now());
 
         $qrAuthCode = hash_hmac(
             'sha256', $secondsElapsedSinceStartTime, $transaction->getQrStartSecret()
