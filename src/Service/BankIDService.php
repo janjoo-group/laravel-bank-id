@@ -47,8 +47,8 @@ class BankIDService
     public function sign(
         string $endUserIp,
         string $userVisibleData,
-        string $userVisibleDataFormat = null,
-        string $userNonVisibleData = null,
+        ?string $userVisibleDataFormat = null,
+        ?string $userNonVisibleData = null,
         array $requirement = null
     ): ?TransactionResponse {
         if (
@@ -94,10 +94,10 @@ class BankIDService
 
     public function auth(
         string $endUserIp,
-        string $userVisibleData = null,
-        string $userVisibleDataFormat = null,
-        string $userNonVisibleData = null,
-        array $requirement = null
+        ?string $userVisibleData = null,
+        ?string $userVisibleDataFormat = null,
+        ?string $userNonVisibleData = null,
+        ?array $requirement = null
     ): ?TransactionResponse {
         if (
             $this->getSessionTransaction() &&
@@ -251,7 +251,7 @@ class BankIDService
         return $this->session->get($this->sessionKey);
     }
 
-    public function setSessionTransaction(BankIDTransaction $transaction = null): void
+    public function setSessionTransaction(?BankIDTransaction $transaction = null): void
     {
         $this->session->put($this->sessionKey, $transaction);
     }
