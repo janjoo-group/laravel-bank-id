@@ -118,6 +118,7 @@ Example usage:
 ```html
 <script type="module" src="https://cdn.jsdelivr.net/gh/janjoo-group/bank-id-components@latest/dist/jgroup-bank-id-components/jgroup-bank-id-components.esm.js"></script>
 
+<!-- this will render a button that will start the configured process, qr generation etc. -->
 <jgroup-bank-id
     type="auth"
     auth-url="BANKID_AUTH_START_URL"
