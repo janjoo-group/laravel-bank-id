@@ -4,7 +4,7 @@ A package for integrating Swedish BankID in your Laravel applications.
 
 The source code is based on the [sample application provided by BankID](https://github.com/BankID/SampleCode) which is written in Java using Spring.
 
-**This package was developed using Laravel 8 and has not been tested on earlier versions.**
+**This package has not been tested on < Laravel 8.**
 
 ## Getting started
 
@@ -105,4 +105,25 @@ Route::post('/submit-form', function(Request $request) {
     BankID::setSessionTransaction(null);
 });
 
+```
+
+## Front-end
+
+We've also developed a web component that works really well with this package and makes it easy to integrate BankID on websites.
+
+[Component README](https://github.com/janjoo-group/bank-id-components/tree/main/src/components/jgroup-bank-id)
+
+Example usage:
+
+```html
+<script type="module" src="https://cdn.jsdelivr.net/gh/janjoo-group/bank-id-components@latest/dist/jgroup-bank-id-components/jgroup-bank-id-components.esm.js"></script>
+
+<jgroup-bank-id
+    type="auth"
+    auth-url="BANKID_AUTH_START_URL"
+    collect-url="BANKID_AUTH_COLLECT_URL"
+    cancel-url="BANKID_CANCEL_URL"
+    language="sv"
+    dark-theme="true"
+/>
 ```
